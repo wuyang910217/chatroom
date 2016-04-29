@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Tabs, Tab } from 'material-ui/Tabs';
 
 class NavBar extends Component {
+  handleChange(value) {
+    console.log(value);
+  }
+
   render() {
     return (
       <div>
-      <Link to='/'>Home</Link>
-      <Link to='/signup'>Sign up</Link>
-      <Link to='/login'>Login</Link>
+      <Tabs onChange={ this.handleChange.bind(this) }>
+      <Tab label='Home'  value='/' />
+      <Tab label='Sign up' value='/signup' />
+      <Tab label='Login' value='/Login' />
+      </Tabs>
       </div>
     );
   }
 }
+
+NavBar.contextTypes= {
+  muiTheme: React.PropTypes.object.isRequired,
+};
 
 export default NavBar;
