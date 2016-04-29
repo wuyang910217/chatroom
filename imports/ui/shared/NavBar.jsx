@@ -2,17 +2,42 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {tabIndex: '/'};
+  }
+
+  componentWillMount() {
+    this.setState({
+      tabIndex: this.getSelectedIndex()
+    });
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      tabIndex: this.getSelectedIndex()
+    });
+  }
+
+  getSelectedIndex() {
+    return this.context.router.isActive('/', true) ? '/' :
+      this.context.router.isActive('/signup') ? '/signup' :
+      this.context.router.isActive('/login') ? '/login' : ' ';
+  }
+
   handleChange(value) {
-    console.log(value);
+    // console.log(value);
+    this.context.router.push(value);
+    this.setState({tabIndex: value});
   }
 
   render() {
     return (
       <div>
-      <Tabs onChange={ this.handleChange.bind(this) }>
+      <Tabs  value= { this.state.tabIndex } onChange={ this.handleChange.bind(this) }>
       <Tab label='Home'  value='/' />
       <Tab label='Sign up' value='/signup' />
-      <Tab label='Login' value='/Login' />
+      <Tab label='Login' value='/login' />
       </Tabs>
       </div>
     );
@@ -21,6 +46,7 @@ class NavBar extends Component {
 
 NavBar.contextTypes= {
   muiTheme: React.PropTypes.object.isRequired,
+  router: React.PropTypes.object.isRequired,
 };
 
 export default NavBar;
