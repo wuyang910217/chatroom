@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import NavBar from './shared/NavBar.jsx';
@@ -25,10 +25,12 @@ class App extends Component {
   render(){
     const styles = this.getStyles();
     return (
-      <div style={ styles.root }>
-      <NavBar />
-      { this.props.children }
-      </div>
+      <StyleRoot>
+        <div style={ styles.root }>
+          <NavBar />
+          { this.props.children }
+        </div>
+      </StyleRoot>
     );
   }
 }
