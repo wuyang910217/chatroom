@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
+import { white, blue } from '../styles/colors';
+import typography from '../styles/typography';
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -37,18 +40,19 @@ class NavBar extends Component {
       root: {
         flexShrink: '0',
         height: '64px',
-        backgroundColor: '#00bcd4',
+        backgroundColor: blue,
         boxShadow: '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
       },
       tabs: {
         width: '390px',
         position: 'absolute',
         right: '60px',
+        fontFamily: typography.fontFamily,
         textTransform: 'uppercase',
       },
       tab: {
         height: '64px',
-        color: '#fff',
+        color: white,
       },
       inkBar: {
         height: '4px',
