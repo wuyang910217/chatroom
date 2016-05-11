@@ -8,6 +8,7 @@ import { HTTP } from 'meteor/http';
 import isEmpty from 'lodash/fp/isEmpty';
 import UserInfo from './user/UserInfo.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
+import '../api/users.js';
 
 class  Account extends Component {
   constructor(props) {
@@ -31,17 +32,13 @@ class  Account extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    let user = this.state.user;
-    const info = {
-      profile: {
-        avatar_url: user.avatar_url,
-        followers: user.followers,
-        following: user.following,
-        public_repos: user.public_repos
+    Meteor.call('update/user', this.state.user, (error) => {
+      if(error) {
+        console.log(error);
+        return;
       }
-    };
-    Meteor.users.update(Meteor.userId(), {$set: info});
     this.context.router.push('/chat');
+  });
   }
 
   render(){

@@ -76,13 +76,13 @@ class NavBar extends Component {
           style= {styles.tabs}
           inkBarStyle={styles.inkBar}
           tabItemContainerStyle={{backgroundColor: 'transparent'}} >
-        <Tab label='Home'  value='/' style={styles.tab} />
+        <Tab label='主页'  value='/' style={styles.tab} />
         <Tab
-            label={ currentUser ? 'account' : 'sign up' }
+            label={ currentUser ? '账户' : '注册' }
             value={ currentUser ? '/account' : '/signup' }
             style={styles.tab} />
         <Tab
-            label={ currentUser ? 'chat' : 'log in' }
+            label={ currentUser ? '聊天' : '登录' }
             value={ currentUser ? '/chat' : '/login' }
             style={styles.tab} />
       </Tabs>

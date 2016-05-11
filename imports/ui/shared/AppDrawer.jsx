@@ -63,13 +63,13 @@ class AppDrawer extends Component {
           selectedItemStyle={styles.selectedList}
           value={this.state.listIndex}
           onChange={this.handleChange.bind(this)}>
-          <ListItem value='/' primaryText='Home' />
+          <ListItem value='/' primaryText='主页' />
           <ListItem
             value={ currentUser ? '/account' : '/signup' }
-            primaryText={ currentUser ? 'Account' : 'Sign up' } />
+            primaryText={ currentUser ? '账户' : '注册' } />
           <ListItem
             value={ currentUser ? '/chat' : '/login' }
-            primaryText={ currentUser ? 'Chat' : 'Log in' } />
+            primaryText={ currentUser ? '聊天' : '登录' } />
         </SelectableList>
       </Drawer>
     );

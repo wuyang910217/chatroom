@@ -53,13 +53,14 @@ class App extends Component {
   }
    getAppBar() {
     return (
-      <AppBar onLeftIconButtonTouchTap={this.handleTouchTap.bind(this)} />
+      <AppBar onLeftIconButtonTouchTap={this.handleTouchTap.bind(this)} style={{flexShrink: 0}}/>
     );
   }
   getLoginAppBar() {
     return (
       <AppBar onLeftIconButtonTouchTap={this.handleTouchTap.bind(this)}
         iconStyleRight={{marginTop: 0}}
+        style={{flexShrink: 0}}
         iconElementRight={<LogOutMenu currentUser={Meteor.user()}/>}/>
     );
   }
